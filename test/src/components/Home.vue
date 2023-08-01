@@ -1,0 +1,17 @@
+<template>
+    <div>
+        <router-link to="/login">Login </router-link>
+        <router-link to="/register">Register </router-link>
+    </div>
+    <router-view/>
+
+
+
+</template>
+
+
+<script setup>
+
+
+
+</script>
