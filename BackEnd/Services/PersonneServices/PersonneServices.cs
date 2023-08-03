@@ -26,19 +26,31 @@ namespace BackEnd.Services.PersonneServices
         public async Task<personne> DeletePersonne(int id)
         {
             var pers=await  context.Personnes.FirstOrDefaultAsync(c=>c.id==id);
-              context.Personnes.Remove(pers!);
-            return pers;
+            if(pers is null)
+                throw new Exception("user not found with this id :{"+id+"}");
+            context.Personnes.Remove(pers);
+            await context.SaveChangesAsync();
+            return pers!;
         }
 
         public async Task<personne> GetPersonne(string name)
         {
             var pers=await context.Personnes.FirstOrDefaultAsync(c=>c.Name==name);
-            return pers!;
+            if( pers is null)
+                throw new Exception("user not found with this name :{"+name+"}");
+            return pers;
         }
 
-        public async Task<personne> UpdatePersonne(int id)
+        public async Task<personne> UpdatePersonne(int  id,PersonneDto newpers)
         {
-            throw new NotImplementedException();
+            var pers=await context.Personnes.FirstOrDefaultAsync(c=>c.id==id);
+            if(pers ==null )
+                throw new Exception("user not found with this id : {"+id+"}");
+            pers.age=newpers.age;
+            pers.Name=newpers.Name;
+            await context.SaveChangesAsync();
+            return pers;
+
         }
     }
 }

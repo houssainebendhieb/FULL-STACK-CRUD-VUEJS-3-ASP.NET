@@ -21,5 +21,23 @@ namespace BackEnd.Controllers
             return await Context.AddPersonne(newPers);
     
         }
+
+        [HttpPut("{id}")]
+        public async Task<personne>UpdatePersonne(int id,PersonneDto newpers){
+            return await Context.UpdatePersonne(id,newpers);
+        }
+
+        [HttpGet]
+        public async Task<personne>GetUser(string name){
+
+            return await Context.GetPersonne(name);
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<personne>DeletePersonne(int id){
+            return await Context.DeletePersonne(id);
+        }
+
     }
 }

@@ -10,7 +10,7 @@ namespace BackEnd.Services.PersonneServices
         public Task<personne> AddPersonne(PersonneDto newPers);
         public Task<personne> DeletePersonne(int id);
 
-        public Task<personne> UpdatePersonne(int id);
+        public Task<personne> UpdatePersonne(int id,PersonneDto newpers);
         public Task<personne> GetPersonne(string name);
         
 
